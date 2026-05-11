@@ -34,7 +34,6 @@
 
     <insert id="insertEmp"
             parameterType="com.example.demo3.emp.dto.EmpDTO">
-
         INSERT INTO emp
         (
             empno,
@@ -51,18 +50,23 @@
                 #{empno},
                 #{ename},
                 #{mgr},
-                TO_DATE(#{hiredate}, 'YYYY-MM-DD'),
-                #{job},
+                TO_DATE(#{hiredate}, 'YYYY-MM-DD HH24:MI:SS'), #{job},
                 #{sal},
                 #{comm},
                 #{deptno}
             )
-
     </insert>
 
     <update id="updateEmp" parameterType="com.example.demo3.emp.dto.EmpDTO">
         UPDATE emp
-        SET hiredate = #{hiredate}
+        SET
+            ename = #{ename},
+            job = #{job},
+            mgr = #{mgr},
+            hiredate = TO_DATE(#{hiredate}, 'YYYY-MM-DD HH24:MI:SS'),
+            sal = #{sal},
+            comm = #{comm},
+            deptno = #{deptno}
         WHERE empno = #{empno}
     </update>
 

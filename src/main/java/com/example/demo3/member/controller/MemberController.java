@@ -28,6 +28,7 @@ public class MemberController {
 	public String t1() {
 		return "member/index";
 	}
+
 	@GetMapping("/joinForm")
 	public String joinForm(){
 		return "member/joinForm";

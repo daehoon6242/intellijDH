@@ -58,4 +58,40 @@ public class EmpController {
                 ApiResponse.success("등록 성공")
         );
     }
+
+    // 1. 직원 정보 수정 (PUT)
+    @PutMapping("/{empno}")
+    public ResponseEntity<ApiResponse<String>> updateEmp(
+            @PathVariable("empno") int empno,
+            @RequestBody EmpDTO dto) {
+
+        log.info("update empno = [{}], dto = [{}]", empno, dto);
+
+        // URL로 넘어온 사원번호를 DTO에 확실하게 세팅 (데이터 불일치 방지용 안전장치)
+        dto.setEmpno(empno);
+
+        // Service 계층의 수정 로직 호출
+        empService.updateEmp(dto);
+
+        return ResponseEntity.ok(
+                ApiResponse.success("수정 성공")
+        );
+    }
+
+    // 2. 직원 정보 삭제 (DELETE)
+    @DeleteMapping("/{empno}")
+    public ResponseEntity<ApiResponse<String>> deleteEmp(
+            @PathVariable("empno") int empno) {
+
+        log.info("delete empno = [{}]", empno);
+
+        // Service 계층의 삭제 로직 호출
+        empService.deleteEmp(empno);
+
+        return ResponseEntity.ok(
+                ApiResponse.success("삭제 성공")
+        );
+    }
+
+
 }
