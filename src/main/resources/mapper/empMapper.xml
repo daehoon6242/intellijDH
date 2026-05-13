@@ -50,7 +50,7 @@
                 #{empno},
                 #{ename},
                 #{mgr},
-                TO_DATE(#{hiredate}, 'YYYY-MM-DD HH24:MI:SS'), #{job},
+                TO_DATE(#{hiredate}, 'YYYY-MM-DD'), #{job},
                 #{sal},
                 #{comm},
                 #{deptno}
@@ -63,7 +63,7 @@
             ename = #{ename},
             job = #{job},
             mgr = #{mgr},
-            hiredate = TO_DATE(#{hiredate}, 'YYYY-MM-DD HH24:MI:SS'),
+            hiredate = TO_DATE(#{hiredate}, 'YYYY-MM-DD'),
             sal = #{sal},
             comm = #{comm},
             deptno = #{deptno}
